@@ -1,2 +1,3 @@
 .venv/
 PG_data/
+.env
