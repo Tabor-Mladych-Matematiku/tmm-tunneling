@@ -4,7 +4,7 @@ Server is logging every request and locks user if 3 wrong attempts are made in a
 
 ## Users
 
-### POST /api/game
+### POST /api/game/insert.php
 
 #### body params
 
@@ -24,7 +24,7 @@ Server is logging every request and locks user if 3 wrong attempts are made in a
 
 403 if wrong credentials
 
-## POST /api/users/login
+## POST /api/users/login.php
 
 #### body params
 
@@ -45,7 +45,7 @@ Server is logging every request and locks user if 3 wrong attempts are made in a
 
 ## Admin
 
-### POST /api/user
+### POST /api/user/insert.php
 
 #### body params
 
@@ -68,12 +68,13 @@ Server is logging every request and locks user if 3 wrong attempts are made in a
 
 403 if wrong credentials
 
-### GET /api/user/:user_id
+### GET /api/user/get.php
 
 #### body params
 
 ```json
 {
+  "user_id": int,
   "admin_id": int,
   "admin_password": string,
 }
@@ -97,7 +98,7 @@ Server is logging every request and locks user if 3 wrong attempts are made in a
 
 403 if wrong credentials
 
-### POST /api/game/ban/:user_id
+### POST /api/game/ban/insert.php
 
 #### body params:
 
@@ -116,12 +117,13 @@ Server is logging every request and locks user if 3 wrong attempts are made in a
 
 403 if wrong credentials
 
-### GET /api/user/logins/:user_id
+### GET /api/user/logins/get.php
 
 #### body params
 
 ```json
 {
+  "user_id": int,
   "admin_id": int,
   "admin_password",
 }
