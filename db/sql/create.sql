@@ -22,14 +22,6 @@ CREATE TABLE "t_logins" (
   "state" bool NOT NULL
 );
 
-CREATE TABLE "t_bans" (
-  "ban_id" int PRIMARY KEY,
-  "user_id" int NOT NULL,
-  "time" datetime NOT NULL DEFAULT (now())
-);
-
 ALTER TABLE "t_logins" ADD FOREIGN KEY ("user_id") REFERENCES "t_users" ("user_id");
-
-ALTER TABLE "t_bans" ADD FOREIGN KEY ("user_id") REFERENCES "t_users" ("user_id");
 
 ALTER TABLE "t_games" ADD FOREIGN KEY ("user_id") REFERENCES "t_users" ("user_id");
