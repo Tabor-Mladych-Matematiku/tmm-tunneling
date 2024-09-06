@@ -100,25 +100,6 @@ Server is logging every request and locks user if 3 wrong attempts are made in a
 
 405 if banned
 
-### POST /api/game/ban/insert.php
-
-#### body params:
-
-```json
-{
-  "user_id": int,
-  "datetime": timestamp,
-  "admin_id": int,
-  "admin_password": string,
-}
-```
-
-#### returns
-
-200 if ok
-
-403 if wrong credentials
-
 ### GET /api/user/logins/get.php
 
 #### body params
