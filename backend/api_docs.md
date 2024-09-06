@@ -91,8 +91,6 @@ Server is logging every request and locks user if 3 wrong attempts are made in a
   "lastname": string,
   "password": string,
   "points": int,
-  "admin_id": int,
-  "admin_password": string,
 }
 ```
 
