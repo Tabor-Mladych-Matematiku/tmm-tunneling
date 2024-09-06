@@ -68,6 +68,8 @@ Server is logging every request and locks user if 3 wrong attempts are made in a
 
 403 if wrong credentials
 
+405 if banned
+
 ### GET /api/user/get.php
 
 #### body params
