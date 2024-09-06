@@ -100,7 +100,7 @@ Server is logging every request and locks user if 3 wrong attempts are made in a
 
 405 if banned
 
-### GET /api/user/logins/get.php
+### GET /api/user/login/get.php
 
 #### body params
 
