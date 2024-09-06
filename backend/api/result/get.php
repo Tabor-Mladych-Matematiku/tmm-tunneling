@@ -3,12 +3,12 @@ header('Access-Control-Allow-Origin: *');
 header('Content-type: aplicaton/json');
 require_once '../../Repositories/database.php';
 require_once '../../Repositories/userrepository.php';
-require_once '../../Repositories/resultrepository.php';
 require_once '../../Repositories/loginrepository.php';
+require_once '../../Repositories/resultrepository.php';
 $db = new Database();
 $userrepo = new UserRepository($db);
-$resultrepo = new ResultRepository($db);
 $loginrepo = new LoginRepository($db);
+$resultrepo = new ResultRepository($db);
 
 $data = json_decode(file_get_contents("php://input"));
 $user = $userrepo->FindbyUsername($data->admin_id);
@@ -28,16 +28,20 @@ if ($user['password'] != $data->admin_password)
   exit(http_response_code(403));
 }
 
-$userrepo->LoginOK($data->user_id);
+$userrepo->LoginOK($data->admin_id);
 $loginrepo->Insert($data->admin_id, true);
 
-$user_data = $resultrepo->FindById($data->user_id);
-$user_single = array(
-  'user_id' => $user_data['user_id'],
-  'firstname' => $user_data['firstname'],
-  'lastname' => $user_data['lastname'],
-  'password' => $user_data['password'],
-  'points' => $user_data['points'],
-);
-echo json_encode($user_single);
+$result_data = $result_data->FindAll();
+$result_arr = array();
+
+for ($i = 0; $i < count($result_data); $i++) {
+  $result_single = array(
+    'id' => $result_data[$i]['user_id'],
+    'lastname' => $result_data[$i]['firstname'],
+    'lastname' => $result_data[$i]['lastname'],
+    'points' => $result_data[$i]['points'],
+  );
+  array_push($result_arr, $result_single);
+}
+echo json_encode($result_arr);
 exit(http_response_code(200));

@@ -3,11 +3,9 @@ header('Access-Control-Allow-Origin: *');
 header('Content-type: aplicaton/json');
 require_once '../../Repositories/database.php';
 require_once '../../Repositories/userrepository.php';
-require_once '../../Repositories/resultrepository.php';
 require_once '../../Repositories/loginrepository.php';
 $db = new Database();
 $userrepo = new UserRepository($db);
-$resultrepo = new ResultRepository($db);
 $loginrepo = new LoginRepository($db);
 
 $data = json_decode(file_get_contents("php://input"));
@@ -28,16 +26,14 @@ if ($user['password'] != $data->admin_password)
   exit(http_response_code(403));
 }
 
-$userrepo->LoginOK($data->user_id);
+$userrepo->LoginOK($data->admin_id);
 $loginrepo->Insert($data->admin_id, true);
 
-$user_data = $resultrepo->FindById($data->user_id);
+$user_data = $loginrepo->SelectById($data->user_id);
 $user_single = array(
-  'user_id' => $user_data['user_id'],
-  'firstname' => $user_data['firstname'],
-  'lastname' => $user_data['lastname'],
-  'password' => $user_data['password'],
-  'points' => $user_data['points'],
+  'successes' => $user_data['successes'],
+  'failures' => $user_data['failures'],
+  'last_login' => $user_data['last_login'],
 );
 echo json_encode($user_single);
 exit(http_response_code(200));
