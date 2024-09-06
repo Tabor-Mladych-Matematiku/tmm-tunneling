@@ -108,7 +108,7 @@ Server is logging every request and locks user if 3 wrong attempts are made in a
 {
   "user_id": int,
   "admin_id": int,
-  "admin_password",
+  "admin_password": string,
 }
 ```
 
@@ -116,9 +116,9 @@ Server is logging every request and locks user if 3 wrong attempts are made in a
 
 ```json
 {
-  successes: int,
-  failures: int,
-  last_login: timestamp,
+  "successes": int,
+  "failures": int,
+  "last_login": timestamp,
 }
 ```
 
