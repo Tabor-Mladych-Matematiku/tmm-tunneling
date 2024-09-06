@@ -1,6 +1,6 @@
 # API Docs
 
-Server is logging every request and locks user if 3 wrong attempts are made in a row. Same gfx for admin but only one wrong attempt required to lock. in that case user needs to be unlocked directly in database.
+Server is logging every request and locks user if 3 wrong attempts are made in a row. If locked, user has to be changed directly in database by setting t_users.failedAttempts=0.
 
 ## Users
 
