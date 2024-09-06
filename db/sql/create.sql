@@ -4,7 +4,6 @@ CREATE TABLE "t_users" (
   "lastname" varchar(30) NOT NULL,
   "password" varchar(50) NOT NULL,
   "isAdmin" bool NOT NULL DEFAULT false,
-  "isLocked" bool NOT NULL DEFAULT false,
   "failedAttempts" int NOT NULL DEFAULT 0
 );
 
