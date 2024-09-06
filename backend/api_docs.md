@@ -98,6 +98,8 @@ Server is logging every request and locks user if 3 wrong attempts are made in a
 
 403 if wrong credentials
 
+405 if banned
+
 ### POST /api/game/ban/insert.php
 
 #### body params:
@@ -138,3 +140,34 @@ Server is logging every request and locks user if 3 wrong attempts are made in a
   last_login: timestamp,
 }
 ```
+
+### GET /api/result/get.php
+
+#### body params
+
+```json
+{
+  "admin_id": int,
+  "admin_password": string,
+}
+```
+
+#### returns:
+
+```json
+[
+  {
+    "user_id": int,
+    "firstname": string,
+    "lastname": string,
+    "password": string,
+    "points": int,
+  }
+]
+```
+
+200 if ok
+
+403 if wrong credentials
+
+405 if banned
