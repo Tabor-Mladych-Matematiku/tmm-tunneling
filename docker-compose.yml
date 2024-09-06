@@ -7,6 +7,7 @@ services:
     ports: ['${POSTGRES_PORT}:5432']
     volumes:
       - ./db/sql/create.sql:/docker-entrypoint-initdb.d/01_create.sql
+      - ./db/sql/insert.sql:/docker-entrypoint-initdb.d/02_insert.sql
       - ./db/PG_data/postgres-data:/var/lib/postgresql/data
     env_file: [.env]
   api:
