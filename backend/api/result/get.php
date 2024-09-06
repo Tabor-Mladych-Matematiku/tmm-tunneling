@@ -31,13 +31,13 @@ if ($user['password'] != $data->admin_password)
 $userrepo->LoginOK($data->admin_id);
 $loginrepo->Insert($data->admin_id, true);
 
-$result_data = $result_data->FindAll();
+$result_data = $resultrepo->FindAll();
 $result_arr = array();
 
 for ($i = 0; $i < count($result_data); $i++) {
   $result_single = array(
     'id' => $result_data[$i]['user_id'],
-    'lastname' => $result_data[$i]['firstname'],
+    'firstname' => $result_data[$i]['firstname'],
     'lastname' => $result_data[$i]['lastname'],
     'points' => $result_data[$i]['points'],
   );
