@@ -2,7 +2,7 @@
 services:
   db:
     image: postgres
-    container_name: tunneling-db
+    container_name: ${POSTGRES_HOST}
     restart: unless-stopped
     ports: ['${POSTGRES_PORT}:5432']
     volumes:
@@ -12,7 +12,7 @@ services:
     env_file: [.env]
   api:
     build: ./backend
-    container_name: tunneling-api
+    container_name: ${BACKEND_HOSTNAME}
     restart: unless-stopped
     ports: ['${BACKEND_PORT_SSL}:443', '${BACKEND_PORT}:80']
     depends_on: [db]
