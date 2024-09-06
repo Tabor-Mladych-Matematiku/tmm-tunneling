@@ -24,7 +24,7 @@ Server is logging every request and locks user if 3 wrong attempts are made in a
 
 403 if wrong credentials
 
-## POST /api/users/login.php
+## POST /api/user/login.php
 
 #### body params
 
