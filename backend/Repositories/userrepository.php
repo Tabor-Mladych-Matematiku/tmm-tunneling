@@ -31,14 +31,14 @@ class UserRepository {
 
   public function LoginFail($user_id)
   {
-    $fails = $this->FindbyUsername['failedAttempts'] + 1;
-    $sql = 'Update t_users set failedAttempts = :fails where user_id=:user_id';
+    $fails = $this->FindbyUsername($user_id)['failed_attempts'] + 1;
+    $sql = 'Update t_users set failed_attempts = :fails where user_id=:user_id';
     return $this->db->loginFail($sql, $user_id, $fails);
   }
 
   public function LoginOK($user_id)
   {
-    $sql = 'UPDATE t_users SET failedAttempts = 0 WHERE user_id=:user_id';
+    $sql = 'UPDATE t_users SET failed_attempts = 0 WHERE user_id=:user_id';
     return $this->db->loginOK($sql, $user_id);
   }
 }
