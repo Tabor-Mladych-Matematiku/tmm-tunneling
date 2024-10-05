@@ -25,12 +25,19 @@ if ($user['failed_attempts'] > 2 || !$user['is_admin'])
 if ($user['password'] != $data->admin_password)
 {
   $userrepo->LoginFail($data->admin_id);
-  $loginrepo->Insert($data->admin_id, false);
+  $loginrepo->Insert($data->admin_id, "false");
   exit(http_response_code(403));
 }
 
 $userrepo->LoginOK($data->user_id);
-$loginrepo->Insert($data->admin_id, true);
+$loginrepo->Insert($data->admin_id, "true");
+
+$usercheck = $userrepo->FindbyUsername($data->user_id);
+if ($usercheck)
+{
+  exit(http_response_code(400));
+}
+
 $userrepo->Insert($data->user_id, $data->firstname, $data->lastname, $data->password);
 exit(http_response_code(200));
 

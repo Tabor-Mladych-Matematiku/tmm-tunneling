@@ -25,12 +25,12 @@ if ($user['failed_attempts'] > 2)
 if ($user['password'] != $data->password)
 {
   $userrepo->LoginFail($data->user_id);
-  $loginrepo->Insert($data->admin_id, false);
+  $loginrepo->Insert($data->user_id, "false");
   exit(http_response_code(403));
 }
 
 $userrepo->LoginOK($data->user_id);
-$loginrepo->Insert($data->admin_id, true);
+$loginrepo->Insert($data->user_id, "true");
 $gamerepo->Insert($data->user_id, $data->success);
 exit(http_response_code(200));
 

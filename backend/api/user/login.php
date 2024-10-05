@@ -16,18 +16,18 @@ $user = $userrepo->FindbyUsername($data->user_id);
 if (!$user) {
   exit(http_response_code(403));
 }
-if ($user['failedAttempts'] > 2)
+if ($user['failed_attempts'] > 2)
 {
   exit(http_response_code(405));
 }
 if ($user['password'] != $data->password)
 {
-  $userrepo->LoginFail($data->admin_id);
-  $loginrepo->Insert($data->admin_id, false);
+  $userrepo->LoginFail($data->user_id);
+  $loginrepo->Insert($data->user_id, "false");
   exit(http_response_code(403));
 }
-$loginrepo->Insert($data->admin_id, true);
-$userrepo->LoginOK($data->admin_id);
+$loginrepo->Insert($data->user_id, "true");
+$userrepo->LoginOK($data->user_id);
 
 exit(http_response_code(200));
 
