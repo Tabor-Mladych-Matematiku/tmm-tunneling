@@ -24,12 +24,12 @@ if ($user['failed_attempts'] > 2 || !$user['is_admin'])
 if ($user['password'] != $data->admin_password)
 {
   $userrepo->LoginFail($data->admin_id);
-  $loginrepo->Insert($data->admin_id, false);
+  $loginrepo->Insert($data->admin_id, "false");
   exit(http_response_code(403));
 }
 
 $userrepo->LoginOK($data->user_id);
-$loginrepo->Insert($data->admin_id, true);
+$loginrepo->Insert($data->admin_id, "true");
 
 $user_data = $resultrepo->FindById($data->user_id);
 $user_single = array(
