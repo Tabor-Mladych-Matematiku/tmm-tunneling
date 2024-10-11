@@ -1,0 +1,204 @@
+[gd_scene load_steps=6 format=3 uid="uid://fqxeancpwyju"]
+
+[ext_resource type="Script" path="res://timer_label.gd" id="1_6tl0g"]
+[ext_resource type="Script" path="res://dropdown.gd" id="2_0ewwo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_apjpt"]
+bg_color = Color(0.266667, 0.282353, 0.305882, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_140jx"]
+bg_color = Color(0.266667, 0.282353, 0.305882, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mmat5"]
+bg_color = Color(0.164706, 0.172549, 0.180392, 1)
+
+[node name="Math" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_apjpt")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 802.0
+offset_top = 727.0
+offset_right = 1372.0
+offset_bottom = 1103.0
+theme_override_font_sizes/font_size = 276
+text = ":)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FirstNameLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 154.0
+offset_top = 19.0
+offset_right = -156.0
+offset_bottom = 273.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.0705882, 0.784314, 0.964706, 1)
+theme_override_font_sizes/font_size = 180
+theme_override_styles/normal = SubResource("StyleBoxFlat_140jx")
+text = "NAMEPLACEHOLDER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SecondNameLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 273.0
+offset_right = 2086.0
+offset_bottom = 568.0
+theme_override_colors/font_color = Color(0.0705882, 0.784314, 0.964706, 1)
+theme_override_font_sizes/font_size = 180
+text = "SECONDPLACEHOLDER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SecondNameLabel2" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 547.0
+offset_right = 2063.0
+offset_bottom = 793.0
+theme_override_colors/font_color = Color(0.45098, 1, 1, 1)
+theme_override_font_sizes/font_size = 180
+text = "1/10 17:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimerLabel" type="Label" parent="Panel"]
+layout_mode = 1
+offset_top = 1187.0
+offset_right = 239.0
+offset_bottom = 1440.0
+theme_override_colors/font_color = Color(0.839216, 0, 0, 1)
+theme_override_font_sizes/font_size = 185
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_6tl0g")
+
+[node name="CalculationPanel" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 793.0
+offset_right = 1388.0
+offset_bottom = 1090.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mmat5")
+
+[node name="OptionButton" type="OptionButton" parent="Panel/CalculationPanel"]
+layout_mode = 0
+offset_left = 243.0
+offset_top = 101.0
+offset_right = 343.0
+offset_bottom = 201.0
+script = ExtResource("2_0ewwo")
+
+[node name="OptionButton2" type="OptionButton" parent="Panel/CalculationPanel"]
+layout_mode = 0
+offset_left = 995.0
+offset_top = 101.0
+offset_right = 1095.0
+offset_bottom = 201.0
+script = ExtResource("2_0ewwo")
+
+[node name="OptionButton3" type="OptionButton" parent="Panel/CalculationPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.5
+offset_top = -47.5
+offset_right = 51.5
+offset_bottom = 52.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_0ewwo")
+
+[node name="Num1Label" type="Label" parent="Panel/CalculationPanel"]
+layout_mode = 0
+offset_right = 215.0
+offset_bottom = 297.0
+theme_override_colors/font_color = Color(0.509804, 0.509804, 0.509804, 1)
+theme_override_font_sizes/font_size = 150
+text = "88"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Num2Label" type="Label" parent="Panel/CalculationPanel"]
+layout_mode = 0
+offset_left = 379.0
+offset_right = 594.0
+offset_bottom = 297.0
+theme_override_colors/font_color = Color(0.509286, 0.509286, 0.509286, 1)
+theme_override_font_sizes/font_size = 150
+text = "88"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Num3Label" type="Label" parent="Panel/CalculationPanel"]
+layout_mode = 0
+offset_left = 751.0
+offset_right = 966.0
+offset_bottom = 297.0
+theme_override_colors/font_color = Color(0.509804, 0.509804, 0.509804, 1)
+theme_override_font_sizes/font_size = 150
+text = "88"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Num4Label" type="Label" parent="Panel/CalculationPanel"]
+layout_mode = 0
+offset_left = 1122.0
+offset_right = 1337.0
+offset_bottom = 297.0
+theme_override_colors/font_color = Color(0.509804, 0.509804, 0.509804, 1)
+theme_override_font_sizes/font_size = 150
+text = "88"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Result" type="Label" parent="Panel/CalculationPanel"]
+layout_mode = 0
+offset_left = 1527.0
+offset_right = 2089.0
+offset_bottom = 297.0
+theme_override_colors/font_color = Color(0.12549, 0.129412, 0.129412, 1)
+theme_override_font_sizes/font_size = 150
+text = "1234.56"
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Panel/CalculationPanel"]
+layout_mode = 0
+offset_left = 1373.0
+offset_top = 91.0
+offset_right = 1509.0
+offset_bottom = 218.0
+
+[node name="Equals" type="Label" parent="Panel/CalculationPanel/Button"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = -45.0
+offset_right = 121.0
+offset_bottom = 160.0
+theme_override_colors/font_color = Color(0.435984, 0.445247, 0.445245, 1)
+theme_override_font_sizes/font_size = 150
+text = "="
+horizontal_alignment = 1
+vertical_alignment = 1

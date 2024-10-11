@@ -1,0 +1,30 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Tunneling client"
+run/main_scene="res://main.tscn"
+config/features=PackedStringArray("4.3", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Player="*res://player.gd"
+CalcEngine="*res://calcEngine.gd"
+Networking="*res://networking.gd"
+
+[display]
+
+window/size/viewport_width=2160
+window/size/viewport_height=1440
+window/size/mode=3
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
