@@ -12,7 +12,11 @@ func _ready() -> void:
 	surnameLabel.set_text(Player.lastName)
 	
 	var timeDict = Time.get_datetime_dict_from_system()
-	var timeStr = str(timeDict["day"]) + "/" + str(timeDict["month"]) + "   " +str(timeDict["hour"]) + ":" + str(timeDict["minute"])
+	var minute = ""
+	if timeDict["minute"] < 10:
+		minute = "0" + str(timeDict["minute"])
+	else: minute = str(timeDict["minute"])
+	var timeStr = str(timeDict["day"]) + "/" + str(timeDict["month"]) + "   " +str(timeDict["hour"]) + ":" + minute
 	timeLabel.set_text(timeStr)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

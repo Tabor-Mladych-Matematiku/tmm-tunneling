@@ -3,9 +3,10 @@ extends Node
 var firstName = ""
 var lastName = ""
 var id = -1
+var password = ""
 var loggedIn = false
 
-var timeLimit = 10
+var timeLimit = 60
 var time = timeLimit
 var timerLabel
 var timerReady
@@ -23,27 +24,27 @@ func _process(delta: float) -> void:
 		if time<0:
 			logout()
 
-func login(id: int, password: String) -> int:
-	var loginCode = checkLogin(id, password)
+func login(ID: int, passWord: String):
+	id = ID
+	password = passWord
+	Networking.sendLoginRequest(ID, passWord)
 	CalcEngine.generateNew()
-	if loginCode == 200:
+
+func login_success():
 		get_tree().change_scene_to_file("res://math.tscn")
 		time = timeLimit
 		loggedIn = true
-	return loginCode
 	
 func logout() -> void:
 	loggedIn = false
 	timerReady = false
+	sendResult()
 	get_tree().change_scene_to_file("res://main.tscn")
 	
 func sendResult() -> void:
-	pass
-	
-func checkLogin(id, password) -> int:
-	# Return 0 if OK, 1 if wrong password, 2 if banned
-	return Networking.loginRequest(id, password)
-	
+	var success = CalcEngine.checkPlayerCorrect()
+	Networking.sendResult(id, password, success)
+		
 func _setTimerReady() -> void:
 	timerReady = true
 	timerLabel = get_tree().get_root().get_node("Math/Panel/TimerLabel")
