@@ -7,7 +7,7 @@ extends Label
 func _ready() -> void:
 	Player._setTimerReady()
 	
-	nameLabel.set_text(Player.id)
+	nameLabel.set_text(str(Player.id))
 	
 	var timeDict = Time.get_datetime_dict_from_system()
 	var minute = ""

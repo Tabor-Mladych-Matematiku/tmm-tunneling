@@ -1,6 +1,6 @@
 extends Node
 
-var address = "192.168.0.2:8080"
+var address = "192.168.0.105:8080"
 var http_request
 var login_request
 func _ready():
@@ -15,7 +15,10 @@ func sendLoginRequest(id, password):
  	"user_id": id,
  	"password": password,
 	})
-	login_request.request("http://"+address + "/api/user/login.php", [], HTTPClient.METHOD_POST, body)
+	var adr = "http://"+address + "/api/user/login.php"
+	print(adr)
+	print(body)
+	login_request.request(adr, [], HTTPClient.METHOD_POST, body)
 
 func print_err(code:int):
 	var ErrLabel = get_tree().get_root().get_node("LoginScreen/Background/LoginContainer/ErrLabel")
@@ -25,6 +28,7 @@ func print_err(code:int):
 		ErrLabel.set_text("TBS našla tvůj tunel! Zkus to později.")
 		
 func loginPlayer(_result, response_code, _headers, _body):
+	print(response_code)
 	if response_code == 200:
 		
 		Player.login_success()
@@ -39,4 +43,4 @@ func sendResult(id: int, password: String, success: bool) -> void:
 	})
 	
 	
-	http_request.request(address + "/api/game/insert.php", [], HTTPClient.METHOD_POST, body)
+	http_request.request("http://"+address + "/api/game/insert.php", [], HTTPClient.METHOD_POST, body)
