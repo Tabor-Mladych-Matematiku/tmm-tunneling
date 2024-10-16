@@ -1,15 +1,13 @@
 extends Label
 
-@onready var nameLabel = get_node("../FirstNameLabel")
-@onready var surnameLabel = get_node("../SecondNameLabel")
+@onready var nameLabel = get_node("../IDLabel")
 @onready var timeLabel = get_node("../TimeLabel")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Player._setTimerReady()
 	
-	nameLabel.set_text(Player.firstName)
-	surnameLabel.set_text(Player.lastName)
+	nameLabel.set_text(Player.id)
 	
 	var timeDict = Time.get_datetime_dict_from_system()
 	var minute = ""

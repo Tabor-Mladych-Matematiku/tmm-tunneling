@@ -1,16 +1,21 @@
 extends Node
 
-var address = "192.168.0.118:5432"
+var address = "192.168.0.2:8080"
+var http_request
+var login_request
+func _ready():
+	http_request = HTTPRequest.new()
+	add_child(http_request)
+	login_request = HTTPRequest.new()
+	add_child(login_request)
+	login_request.request_completed.connect(loginPlayer)
 
 func sendLoginRequest(id, password):
 	var body = JSON.new().stringify({
  	"user_id": id,
  	"password": password,
 	})
-	var http_request = HTTPRequest.new()
-	
-	http_request.request_completed.connect(loginPlayer)
-	http_request.request(address + "/api/game/insert.php", [], HTTPClient.METHOD_POST, body)
+	login_request.request("http://"+address + "/api/user/login.php", [], HTTPClient.METHOD_POST, body)
 
 func print_err(code:int):
 	var ErrLabel = get_tree().get_root().get_node("LoginScreen/Background/LoginContainer/ErrLabel")
@@ -19,14 +24,8 @@ func print_err(code:int):
 	elif code == 405:
 		ErrLabel.set_text("TBS našla tvůj tunel! Zkus to později.")
 		
-func loginPlayer(result, response_code, headers, body):
+func loginPlayer(_result, response_code, _headers, _body):
 	if response_code == 200:
-		
-		var surname = "Jmeno"
-		var firstname = "Prijmeni"
-
-		Player.firstName = firstname
-		Player.lastName = surname
 		
 		Player.login_success()
 		
@@ -38,7 +37,6 @@ func sendResult(id: int, password: String, success: bool) -> void:
  	"password": password,
 	"success": success
 	})
-	var http_request = HTTPRequest.new()
 	
-	http_request.request_completed.connect(loginPlayer)
-	http_request.request(address + "/api/user/login.php", [], HTTPClient.METHOD_POST, body)
+	
+	http_request.request(address + "/api/game/insert.php", [], HTTPClient.METHOD_POST, body)

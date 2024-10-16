@@ -10,10 +10,12 @@ var timeLimit = 60
 var time = timeLimit
 var timerLabel
 var timerReady
-
+var Networking
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	Networking = get_node("/root/Networking")
+	print(Networking.name)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,6 +29,7 @@ func _process(delta: float) -> void:
 func login(ID: int, passWord: String):
 	id = ID
 	password = passWord
+		
 	Networking.sendLoginRequest(ID, passWord)
 	CalcEngine.generateNew()
 
