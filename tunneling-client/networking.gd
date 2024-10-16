@@ -39,8 +39,8 @@ func sendResult(id: int, password: String, success: bool) -> void:
 	var body = JSON.new().stringify({
  	"user_id": id,
  	"password": password,
-	"success": success
+	"success": str(success)
 	})
-	
+	print(body)
 	
 	http_request.request("http://"+address + "/api/game/insert.php", [], HTTPClient.METHOD_POST, body)
