@@ -14,9 +14,9 @@ class GameRepository {
     return $this->db->insertGame($sql, $user_id, $point);
   }
 
-  public function Update($user_id, $time)
+  public function Block($user_id)
   {
-    $sql = 'UPDATE t_games SET point=FALSE WHERE user_id=:user_id and created_at > :time - interval \'12 hours\'';
+    $sql = 'UPDATE t_games SET point=FALSE WHERE user_id=:user_id and created_at > :time - interval \'6 hours\'';
     return $this->db->updateGame($sql, $user_id, $time);
   }
 }
