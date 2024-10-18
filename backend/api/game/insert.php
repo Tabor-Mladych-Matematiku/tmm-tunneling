@@ -18,10 +18,6 @@ $user = $userrepo->FindbyUsername($data->user_id);
 if (!$user) {
   exit(http_response_code(403));
 }
-if ($user['failed_attempts'] > 2)
-{
-  exit(http_response_code(405));
-}
 if ($user['password'] != $data->password)
 {
   $userrepo->LoginFail($data->user_id);
