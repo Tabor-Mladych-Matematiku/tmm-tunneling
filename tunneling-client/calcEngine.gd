@@ -11,6 +11,8 @@ var playerOps = ["+","+","+"]
 
 static var maxValue = 12
 
+func _ready():
+	randomize()
 	
 func getExprString(nums, ops) -> String:
 	var s = str(nums[0]) + ".0"
@@ -63,4 +65,8 @@ func checkPlayerCorrect() -> bool:
 	if getResult(numbers, playerOps) == result:
 		return true
 	else:
+		if(randi()%4 == 0):
+			var aud:AudioStreamPlayer
+			aud = get_tree().get_root().get_node("Math/Audio")
+			aud.play()
 		return false

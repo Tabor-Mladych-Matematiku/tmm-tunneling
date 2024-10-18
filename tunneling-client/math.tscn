@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://fqxeancpwyju"]
+[gd_scene load_steps=7 format=3 uid="uid://fqxeancpwyju"]
 
 [ext_resource type="Script" path="res://timer_label.gd" id="1_6tl0g"]
 [ext_resource type="Script" path="res://button.gd" id="2_bbbpj"]
+[ext_resource type="AudioStream" uid="uid://bkmvlfqvc4txs" path="res://Audio/WIND ROSE - Diggy Diggy Hole (Official Video) _ Napalm Records.mp3" id="3_13k77"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_apjpt"]
 bg_color = Color(0.266667, 0.282353, 0.305882, 1)
@@ -220,3 +221,6 @@ theme_override_font_sizes/font_size = 150
 text = "="
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_13k77")
