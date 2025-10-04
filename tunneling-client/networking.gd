@@ -11,13 +11,14 @@ func _ready():
 	login_request.request_completed.connect(loginPlayer)
 
 func sendLoginRequest(id, password):
+	if str(id).length()>4:
+		get_tree().get_root().get_node("LoginScreen/Background/LoginContainer/ErrLabel").set_text("Netroll jsi lopata!")
+		return
 	var body = JSON.new().stringify({
  	"user_id": id,
  	"password": password,
 	})
 	var adr = "http://"+address + "/api/user/login.php"
-	print(adr)
-	print(body)
 	login_request.request(adr, [], HTTPClient.METHOD_POST, body)
 
 func print_err(code:int):
